@@ -16,7 +16,7 @@ Les données d'entrée pour l'annotation des médicaments seront les résumés d
 
 La sortie créée à partir de ces annotations sera une liste de médicaments et leurs informations. Pour chaque médicament listé, les informations suivantes doivent être annotées si elles sont manquantes ou corrigées si elles sont fausses dans la pré annotation :
 
-1. Médicament ou Classe de médicament (`DRUG`, `CLASS`)
+1. [Médicament ou Classe de médicament](# Médicament ou Classe de Médicaments) (`DRUG`, `CLASS`)
 2. Dose : (`DOSE`)
 3. Fréquence : (`FREQ`)
 4. Duré : (`DURATION`)
