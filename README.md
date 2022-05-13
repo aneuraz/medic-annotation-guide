@@ -16,15 +16,17 @@ Les données d'entrée pour l'annotation des médicaments seront les résumés d
 
 La sortie créée à partir de ces annotations sera une liste de médicaments et leurs informations. Pour chaque médicament listé, les informations suivantes doivent être annotées si elles sont manquantes ou corrigées si elles sont fausses dans la pré annotation :
 
-1. [Médicament ou Classe de médicament](# Médicament ou Classe de Médicaments) (`DRUG`, `CLASS`)
-2. Dose : (`DOSE`)
-3. Fréquence : (`FREQ`)
-4. Duré : (`DURATION`)
-5. Voie d'admission : (`ROUTE`)
-6. Condition : (`CONDITION`)
-7. Événement : (`EVENT`)
-8. Prescriptions : (`DRUGBLOB`, `ORDOBLOB`)
-9. Attributs
+
+1. [Médicament ou Classe de médicament](#medicament) (`DRUG`, `CLASS`)
+2. [Dose](#dose) : (`DOSE`)
+3. [Fréquence](#freq) : (`FREQ`)
+4. [Durée](#duree) : (`DURATION`)
+5. [Voie d'administration](#voie) : (`ROUTE`)
+6. [Condition](#condition) : (`CONDITION`)
+7. [Événement](#evenement) : (`EVENT`)
+8. [Prescriptions](#prescription) : (`DRUGBLOB`, `ORDOBLOB`)
+9. [Attributs](#att)
+
 
 
 Chaque entité peut être annotée par des marqueurs d'attributs. 
@@ -38,6 +40,7 @@ Les annotations doivent être faites même s'il y a des fautes d'orthographe, sa
 
 Dans ce document, les accents et certains signes de ponctuation ont été supprimés des phrases d'exemple françaises pour être en accord avec notre première étude sur l'extraction d'informations sur les médicaments.
 
+<a name="medicament"></a>
 # Médicament ou Classe de Médicaments
 
 Tous les médicaments énumérés dans le résumé de décharge et donnés (présents, passés ou futurs) ou contre-indiqués à un expérimentateur.
@@ -197,6 +200,7 @@ Annoter le nom des médicaments même si leurs attributs sont niés
 - *pas de necessite de doublement des doses d hydrocortisone*
   - drug : *hydrocortisone*
 
+<a name="dose"></a>
 # Dosage (dose)
 
 La quantité d'un seul médicament utilisé dans chaque administration, par exemple *un comprimé, une dose, 30 mg*.
@@ -289,6 +293,7 @@ Annotez un seul motifs (prescription d'ordonnance) pour tous les médicaments lo
     - drug : *ibuprofene*
     - dose : *1 comprime*
 
+<a name="freq"></a>
 # Fréquence (freq)
 
 Termes, phrases ou abréviations qui décrivent la fréquence à laquelle chaque dose du médicament doit être prise.
@@ -342,6 +347,7 @@ Si la fréquence est segmentée et concerne la même entité, annoter la partie 
 - *speciafoldine : 1 comprime par jour, 10 jours par mois.*
   - freq : *10 jours par mois*
 
+<a name="duree"></a>
 # Durée (duree)
 
 Une expression de temps écoulé qui indique pendant combien de temps le médicament doit être administré. Ces expressions sont souvent des syntagmes nominaux, des syntagmes prépositionnels ou des clauses.
@@ -380,6 +386,7 @@ Expressions qui décrivent la durée totale pendant laquelle le médicament doit
 
 Suivez les mêmes principes de base que pour l'annotation de la fréquence. N'incluez pas les prépositions complètes.
 
+
 ### Attribut
 
 - Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des durées. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée se situe avant, pendant ou après l'hospitalisation en cours.
@@ -399,7 +406,8 @@ Suivez les mêmes principes de base que pour l'annotation de la fréquence. N'in
   - duree : *2 ans*
     - temporal_marker : past
 
-# Mode d'administration (route)
+<a name="voie"></a>
+# Voie d'administration (route)
 
 Décrit la méthode d'administration du médicament.
 
@@ -454,6 +462,7 @@ Les cas où un mode s'applique à plusieurs médicaments doivent être traités 
 - *relais par targocid puis orbenine iv jusqu au 24/03/2013*
   - route : *iv*
 
+<a name="condition"></a>
 # Condition (condition)
 
 Expressions qui indiquent la condition pour laquelle le médicament doit être administré. Ces expressions sont souvent des propositions conditionnelles et commencent par une expression conditionnelle telle que "si", "en cas de", "en fonction de"....
@@ -509,6 +518,7 @@ Les différentes façons de désigner la même condition pour les médicaments d
   - condition : *hemolyse non mecanique*
   - increase : *augmenter*
 
+<a name="evenement"></a>
 # Évènements
 
 Information sur le fait que le médicament est commencé, arrêté, poursuivi, augmenté ou diminué à un moment défini. Cette information est généralement exprimée par le verbe principal de la phrase ou par une date. Annotez l'événement indiqué par le mot principal lié au médicament, ainsi que la date la plus précise.
@@ -610,6 +620,7 @@ S'il existe plusieurs médicaments pour un même événement, annotez le normale
     - drug : *fludarabine*
     - drug : *endoxan*
 
+<a name="prescription"></a>
 # Prescription (drug_blob/ordo_blob)
 
 
@@ -677,7 +688,7 @@ Ici, "toujours" est lié à l'ordonnance :
       - drug : *crestor*
       - dose : *5*
 
-
+<a name="att"></a>
 # Attributs: Rappels
 
 Informations qui indiquent quand les événements et les durées doivent avoir lieu et s'ils sont factuels, suggérés, conditionnels ou incertains.
