@@ -1,4 +1,4 @@
-# Remarques Guide d'annotation Pymedext
+# Guide d'annotation pour l'extraction des informations sur les médicaments v2.0
 
 [Lien vers le guide originale (en anglais)](https://equipe22.github.io/medExtAnnotation/)
 
