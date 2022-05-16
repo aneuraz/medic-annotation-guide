@@ -612,12 +612,16 @@ Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut
 ### Exemples :
 
 - *la pancytopenie s est compliquee apres la chimiotherapie d un sepsis a escherichia coli resistant a la tazocilline (tazocilline\* depuis le 6 septembre 2010) traite par fortum a partir du 15 septembre 2010*
+  - **"class"** : chimiotherapie
+  - **"drug"** : *tazocilline*
   - **"drug_blob"** : *tazocilline\* depuis le 6 septembre 2010*
-    - **"drug"** : tazocilline
+    - **"drug"** : *tazocilline*
     - **"start"** : *depuis le 6 septembre 2010*
   - **"drug_blob"** : *fortum a partir du 15 septembre 2010*
     - **"drug"** : *fortum*
     - **"switch"** : *a partir du 15 septembre 2010*
+
+<img src="examples/exemple1.PNG" width="1000px">
 
 - *AUGMENTIN 600mg toutes les 8h jusuq'au 2019-10-11 inclus. PARACETAMOL 250mg toutes les 6h de façon systématique pendant 48h puis en cas de douleurs pendant 7 jours*
   - **"drug_blob"** : *AUGMENTIN 600mg toutes les 8h jusuq'au 2019-10-11 inclus*
@@ -630,9 +634,11 @@ Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut
     - **"dose"** : *250mg*
     - **"frequence"** : *toutes les 6h*
     - **"condition"** : *de façon systématique*
-    - **"duree"** : *pendant 48h*
+    - **"duree"** : *48h*
     - **"condition"** : *en cas de douleurs*
     - **"duree"** : *pendant 7 jours*
+
+<img src="examples/exemple2.PNG" width="1000px">
 
 - *doliprane 1 dose poids\*4/ jour si douleurs (paracetamol 1 boite)*
   - **"drug_blob"** : *doliprane 1 dose poids\*4/ jour si douleurs (paracetamol*
@@ -654,6 +660,8 @@ Ici, *debuter* est lié à l'ordonnance :
     - **"drug"** : *fludarabine*
     - **"drug"** : *endoxan*
 
+<img src="examples/exemple3.PNG" width="1000px">
+
 Ici, *toujours* est lié à l'ordonnance :
 
 - *je ne modifie pas son traitement, soit toujours lasilix 20 mg/j, atacand 8 mg, ezetrol , calciparat 1 g, allopurinol 300 mg et crestor 5.*
@@ -666,8 +674,8 @@ Ici, *toujours* est lié à l'ordonnance :
     - drug_blob : *latacand 8 mg*
       - drug : *atacand*
       - dose :  *8 mg*
+    - drug : *ezetrol*
     - drug_blob : *calciparat 1 g*
-      - drug : *ezetrol*
       - drug : *calciparat*
       - dose :  *1 g*
     - drug_blob : *allopurinol 300 mg*
@@ -677,10 +685,8 @@ Ici, *toujours* est lié à l'ordonnance :
       - drug : *crestor*
       - dose : *5*
 
+<img src="examples/exemple4.PNG" width="1000px">
 
-### Exemples imagés
-
-<img src="examples/ordo_blob1.png" width="1000px">
 
 # Attributs: Rappels
 
