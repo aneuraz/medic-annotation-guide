@@ -20,7 +20,7 @@ La sortie créée à partir de ces annotations sera une liste de médicaments et
 5. [Voie d'administration](#voie-dadministration-route) : **"route"**
 6. [Condition](#condition-condition) : **"condition"**
 7. [Événement](#évènements) : **"event"** : **"start"**, **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"**
-8. [Prescription](#prescription-drugblobordoblob) : **"drug_blob"**, **"ordo_blob"**
+8. [Prescription](#prescription) : **"drug_blob"**, **"ordo_blob"**
 9. [Attributs](#attributs-rappels) :
     - (`NE PAS ANNOTER`) **"temporal_marker"** : **"past"**, **"present"**, **"future"**
     - **"certainty"** : **"factual"**, **"suggested"**, **"uncertain"**, **"negated"**, **"counterindication"** 
@@ -275,7 +275,7 @@ Annotez une gamme de dose comme une seule entrée. Dans cet exemple, il y a plus
   - **"dose"** :  *3 a 4 1/2 ui*
   - **"dose"** :  *3 a 6 ui*
 
-Annotez un seul motifs pour tous les médicaments lorsque la dose en concerne plusieurs : elle sera intégrée dans **ordo_blob** (voir la partie [Prescriptions](#prescription))
+Annotez un seul motifs pour tous les médicaments lorsque la dose en concerne plusieurs : elle sera intégrée dans **ordo_blob** (voir la partie [Prescription](#prescription))
 
 - *doliprane et ibuprofene, 1 comprime toutes les 6 heures chacun*
   - dose : *1 comprime*
@@ -570,7 +570,7 @@ Le passage d'un médicament à un autre comprend deux événements sur la même 
   - **"start"** : *depuis le 6 septembre 2010*
   - **"switch"** : *a partir du 15 septembre 2010*
 
-S'il y a deux événements pour une entité, annotez deux entrées distinctes : elles seront dans le même **"drug_blob"** (voir la partie [Prescriptions](#prescription)). Faites en sorte que chaque entrée soit aussi spécifique et complète que possible.
+S'il y a deux événements pour une entité, annotez deux entrées distinctes : elles seront dans le même **"drug_blob"** (voir la partie [Prescription](#prescription)). Faites en sorte que chaque entrée soit aussi spécifique et complète que possible.
 
 - *debut du traitement par ambisome le 29 mars 2014 a 3 mg/kg jusqu au 2 avril puis 5 mg/kg jusqu au 7 avril, puis 7,5 mg/kg jusqu au 30 avril*
   - **"start"** : debut
@@ -580,7 +580,7 @@ S'il y a deux événements pour une entité, annotez deux entrées distinctes : 
   - **"end"** : *jusqu au 30 avril*
 
 
-S'il existe plusieurs médicaments pour un même événement, annotez le normalement : il sera intégré dans **ordo_blob** (voir la partie [Prescriptions](#prescription))
+S'il existe plusieurs médicaments pour un même événement, annotez le normalement : il sera intégré dans **ordo_blob** (voir la partie [Prescription](#prescription))
 
 - *traitement par endoxan avant de debuter un traitement par mabthera fludarabine endoxan etant donne la lymphocytose majeure et la presence d anemie hemolytique*
   - **"start"** : *debuter*
@@ -588,7 +588,7 @@ S'il existe plusieurs médicaments pour un même événement, annotez le normale
 
 <a name="prescription"></a>
 
-# Prescription (**"drug_blob"**/**"ordo_blob"**)
+# Prescription
 
 Les prescriptions sont des groupements d'annotations. Il existe deux types de prescription : la presciption de médicaments (**"drug_blob"**) et la prescription d'ordonnance (**"ordo_blob"**).
   - Un **drug_blob** correspond à un et un seul médicaments ainsi que ses attributs. Si le même médicament est cité deux fois, il faut ses deux mentions dans le drugblob.
