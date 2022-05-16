@@ -14,13 +14,13 @@ La sortie créée à partir de ces annotations sera une liste de médicaments et
 
 
 1. [Médicament ou Classe de médicament](#médicament-ou-classe-de-médicaments) : **"drug"**, **"class"**
-2. [Dose](#dose-"dose") : **"dose"**
-3. [Fréquence](#fréquence-"freq") : **"freq"**
-4. [Durée](#durée-"duree") : **"duree"**
-5. [Voie d'administration](#voie-dadministration-"route") : **"route"**
-6. [Condition](#condition-"condition") : **"condition"**
+2. [Dose](#dose-dose) : **"dose"**
+3. [Fréquence](#fréquence-freq) : **"freq"**
+4. [Durée](#durée-duree) : **"duree"**
+5. [Voie d'administration](#voie-dadministration-route) : **"route"**
+6. [Condition](#condition-condition) : **"condition"**
 7. [Événement](#évènements) : **"event"** : **"start"**, **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"**
-8. [Prescription](#prescription-"drugblob""ordoblob") : **"drug_blob"**, **"ordo_blob"**
+8. [Prescription](#prescription-drugblobordoblob) : **"drug_blob"**, **"ordo_blob"**
 9. [Attributs](#attributs-rappels) :
     - (`NE PAS ANNOTER`) **"temporal_marker"** : **"past"**, **"present"**, **"future"**
     - **"certainty"** : **"factual"**, **"suggested"**, **"uncertain"**, **"negated"**, **"counterindication"** 
