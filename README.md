@@ -4,6 +4,11 @@
 
 Les remarques/corrections sont en <span style="color:red">rouge</span>.
 
+A confirmer :
+  - <span style="color:red">DUREE/CONTINUE</span>
+  - <span style="color:red">Event_type dans drugblob/ordoblob</span>
+
+
 ![test-image](examples/image-test.jpeg)
 <img src="examples/image-test.jpeg" width="100px">
 
@@ -17,15 +22,15 @@ Les données d'entrée pour l'annotation des médicaments seront les résumés d
 La sortie créée à partir de ces annotations sera une liste de médicaments et leurs informations. Pour chaque médicament listé, les informations suivantes doivent être annotées si elles sont manquantes ou corrigées si elles sont fausses dans la pré annotation :
 
 
-1. [Médicament ou Classe de médicament](#medicament) (`DRUG`, `CLASS`)
-2. [Dose](#dose) : (`DOSE`)
-3. [Fréquence](#freq) : (`FREQ`)
-4. [Durée](#duree) : (`DURATION`)
-5. [Voie d'administration](#voie) : (`ROUTE`)
-6. [Condition](#condition) : (`CONDITION`)
-7. [Événement](#evenement) : (`EVENT`)
-8. [Prescriptions](#prescription) : (`DRUGBLOB`, `ORDOBLOB`)
-9. [Attributs](#att)
+1. [Médicament ou Classe de médicament](#medicament) : **"drug"**, **"class"**
+2. [Dose](#dose) : **"dose"**
+3. [Fréquence](#freq) : **"freq"**
+4. [Durée](#duree) : **"duree"**
+5. [Voie d'administration](#voie) : **"route"**
+6. [Condition](#condition) : **"condition"**
+7. [Événement](#evenement) : **"event"** (**"start"**, **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"**)
+8. [Prescriptions](#prescription) : **"drug_blob"**, **"ordo_blob"**
+9. [Attributs](#att) : **"temporal_marker"** (<span style="color:red">NE PAS ANNOTER.</span>), **"certainty"**, **"experiencer"**, **"event_type"**
 
 
 
@@ -47,8 +52,6 @@ Tous les médicaments énumérés dans le résumé de décharge et donnés (pré
 
 ## Que faut-il annoter ?
 
-<span style="color:red"> revoir tout cela (class dans medoc)</span>
-
 Nom du médicament, génériques, classe de médicaments ou de substances
 
 Pour annoter des médicaments, le texte doit inclure une déclaration explicite indiquant que le patient a pris ce médicament, qu'il le prend actuellement, qu'il se voit prescrire ce médicament, qu'il lui est suggéré de le prendre, qu'il a eu des effets secondaires en le prenant ou qu'il ne peut pas le prendre en raison d'une contre-indication.
@@ -61,17 +64,17 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
   - Les médicaments de marque, par exemple, *doliprane*.
   - Génériques, par ex., *paracétamol*.
   - Ingrédients, par exemple, *furosémide*.
-  - Nom collectif d'un groupe de médicaments, par exemple *corticoïdes* (il sera annoté comme une classe de médicaments).<span style="color:red"> genre là</span>
+  - Nom collectif d'un groupe de médicaments, par exemple *corticoïdes* (il sera annoté comme une classe de médicaments).
 - Médicaments en vente libre :
   - Noms de marque, par exemple, *Aspirine*.
   - Ingrédients, par exemple, *vitamine D*.
-  - Noms collectifs pour un groupe de médicaments, par exemple *vitamines* (ils seront annotés comme une classe de médicaments).<span style="color:red"> ou là</span>
+  - Noms collectifs pour un groupe de médicaments, par exemple *vitamines* (ils seront annotés comme une classe de médicaments).
 
 - Substances biologiques requises ou suggérées par les médecins
   - Ingrédients de la nutrition parentérale totale s'ils sont énumérés individuellement
   - Composants des liquides IV et des solutions salines énumérés (y compris l'"eau minérale" et le "sérum physiologique")
   - Débit glucidique
-- Thérapie par substance, par exemple, *Corticothérapie* ou *traitement antirétroviral* (elle sera annotée comme une classe de médicaments). <span style="color:red"> et là</span>
+- Thérapie par substance, par exemple, *Corticothérapie* ou *traitement antirétroviral* (elle sera annotée comme une classe de médicaments).
 
 
 ### Exclut :
@@ -88,20 +91,23 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
 
 ### Inclut :
 
+- Nom collectif d'un groupe de médicaments, par exemple *corticoïdes* (il sera annoté comme une classe de médicaments).
+- Noms collectifs pour un groupe de médicaments, par exemple *vitamines* (ils seront annotés comme une classe de médicaments).
+Thérapie par substance, par exemple, *Corticothérapie* ou *traitement antirétroviral* (elle sera annotée comme une classe de médicaments).
 - "therapie"
   - oxygénothérapie
   - corticothérapie
   - antibiothérapie
   - antibiotique
-- traitement anti-" avec ou sans "traitement" avant
+- "traitement anti-" avec ou sans "traitement" avant
   - traitement antalgique
   - traitement antirétroviral
   - antihypertenseur
   - vaccination antigrippale
   - antifongique
-- protocole de chimiothérapie
+- Protocole de chimiothérapie
   - abvd
-- autres
+- Autres
   - vaccination contre l'hépatite b/méningocoque...
   - nutrition (si utilisée comme traitement)
     - "oral/parentérale/entérale"
@@ -109,7 +115,7 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
       - sauf s'il y a une distinction entre les deux "nutrition orale mais pas entérale".
     - régime d'urgence
   - complément nutritionnel
-- acronyme
+- Acronyme
   - np (pour nutrition parentérale)
   - avk (pour anti-vitamine K)
   - o2
@@ -120,13 +126,11 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
 - "traitement" sans précision
   - traitement prophylactique
   - traitement pour son asthme
-
-- action suivie par "par"
+- Action suivie par "par"
   - sedation
   - (re)hydratation
   - antibioprophylaxie
-
-- classe incluse dans le dispositif médical
+- Dispositif médical, par exemple, Pompe à Insuline (même si un médicament s'y trouve
 
 
 
@@ -146,13 +150,13 @@ Les pronoms qui font référence à un médicament ne doivent pas être inclus, 
 
 
 
-### Examples :
+### Exemples :
 
 - *amlor : 10 mg le matin*
   - drug : *amlor*
 - *ialuset plus creme*
   - drug : *ialuset plus*
-  - (creme not included in drug name) <span style="color:red">a traduire</span>.
+  - (*creme* non inclus dans **"drug"**)
 - *sevrage de l oxygenotherapie en fevrier 2013*
   - class : *oxygenotherapie*
 - *grand-mere maternelle : diabete de type 2 a 61 ans, sans surpoids, traitee par insuline*
@@ -201,13 +205,13 @@ Annoter le nom des médicaments même si leurs attributs sont niés
   - drug : *hydrocortisone*
 
 <a name="dose"></a>
-# Dosage (dose)
+# Dose (dose)
 
 La quantité d'un seul médicament utilisé dans chaque administration, par exemple *un comprimé, une dose, 30 mg*.
 
 ## Que faut-il annoter ?
 
-Les informations numériques et/ou textuelles qui marquent la quantité et l'unité d'administration d'un médicament utilisé dans une seule administration. Annoter la relation avec le médicament concerné par un lien du dosage au nom du médicament.
+Les informations numériques et/ou textuelles qui marquent la quantité et l'unité d'administration d'un médicament utilisé dans une seule administration.
 
 ### Inclut (liste non exhaustive) :
 
@@ -232,7 +236,7 @@ Les informations numériques et/ou textuelles qui marquent la quantité et l'uni
 - si la dose est niée et que le médicament est donné, par exemple :
   - n'annotez pas "doublement des doses" pour "pas de necessite de doublement des doses d hydrocortisone"
 
-- Dosages cumulés (car trop de variabilité dans la signification) :
+- Doses cumulés (car trop de variabilité dans la signification) :
   - 3 boites
   - *doliprane 1 dose poids\*4/ jour si douleurs (paracetamol 1 boite)*
     - dose : *1 dose poids*
@@ -240,7 +244,7 @@ Les informations numériques et/ou textuelles qui marquent la quantité et l'uni
 
 ## Commnent annoter ?
 
-Annotez tous les dosages mentionnés de tous les médicaments présents dans le résumé de sortie et leur relation avec celui-ci, même s'il fait partie du nom du médicament.
+Annotez tous les doses mentionnés de tous les médicaments présents dans le résumé de sortie et leur relation avec celui-ci, même s'il fait partie du nom du médicament.
 
 - *speciafoldine 5mg 10 jours par mois*
   - dose : *5mg*
@@ -251,7 +255,7 @@ Annotez tous les dosages mentionnés de tous les médicaments présents dans le 
 - *vitabact 0,05 % : x4/jour dans chaque oeil pendant 10 jours*
   - dose: *0,05 %*
 
-Annotez tous les dosages partiels.
+Annotez tous les doses partiels.
 
 - *hydrea 500mg un jour sur 2, 1000mg un jour sur 2*.
   - dose : *500mg*
@@ -261,20 +265,20 @@ Annotez tous les dosages partiels.
   - dose : *5 mg*
   - dose : *12,5mg/m²*
 
-Annotez les différentes façons de se référer au même dosage dans des entrées séparées :
+Annotez les différentes façons de se référer au même dose dans des entrées séparées :
 
 - *sandostatine : 100µg/8h en sc soit 50µg/kg/j*
   - dose : *100µg*
   - dose : *50µg/kg*
 
-Annoter la partie immédiatement adjacente d'un dosage dans une entrée distincte :
+Annoter la partie immédiatement adjacente d'un dose dans une entrée distincte :
 
 - *seretide 50 deux bouffeesx2/j*
   - dose : *50 deux bouffees*
 - *singulair 1 sachet de 4mg/jour,*
   - dose : *1 sachet de 4mg*
 
-Annotez une gamme de dosage comme une seule entrée. Dans cet exemple, il y a plusieurs dosages pour le même médicament mais dans des phrases différentes :
+Annotez une gamme de dose comme une seule entrée. Dans cet exemple, il y a plusieurs doses pour le même médicament mais dans des phrases différentes :
 
 - *matin : 5 a 8 ui novorapid.*
 *midi : 5 a 8 ui novorapid.*
@@ -314,7 +318,7 @@ Toute expression qui indique la fréquence d'administration d'une dose unique d'
   -  par mois
   - tous les soirs
   - x 3 par jour
-  - jour (si précéder d'un dosage)
+  - jour (si précéder d'un dose)
   - 1 - 1 - 1
   - 850 - 1000 - 1000
   - 19/03, 25/03 et 01/04/2016
@@ -378,7 +382,7 @@ Expressions qui décrivent la durée totale pendant laquelle le médicament doit
   - dans 10 jours
   - depuis 10 jours
 
-- Dosages cumulés (car trop de variabilité dans la signification) :
+- doses cumulés (car trop de variabilité dans la signification) :
 
   - 3 boites
 
@@ -389,7 +393,7 @@ Suivez les mêmes principes de base que pour l'annotation de la fréquence. N'in
 
 ### Attribut
 
-- Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des durées. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée se situe avant, pendant ou après l'hospitalisation en cours.
+- <span style="color:red">NE PAS ANNOTER LA TEMPORALITE.</span> Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des durées. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée se situe avant, pendant ou après l'hospitalisation en cours.
 
 ### Exemples
 
@@ -474,27 +478,30 @@ Condition pour laquelle le médicament doit être administré.
 
 ### Inclut (liste non exhaustive) :
 
-- en cas de fievre
-- si besoin
-- si veut
-- en fonction des ASAT
+- (en cas de) fievre
+- (si) besoin
+- (si) veut
+- (en fonction des) ASAT
 
 ## Comment annoter ?
 
 
-Annotez toujours la phrase adjectivale de base la plus informative ou la phrase nominale de base la plus longue comme condition du médicament. N'incluez pas les phrases complexes, n'incluez pas les phrases coordonnées. Au lieu de cela, extrayez de ces phrases la phrase de base, même si cela signifie que vous vous retrouverez avec plusieurs conditions. Une condition peut être liée à un nom de médicament ou à un événement.
+Annotez toujours la phrase adjectivale de base la plus informative ou la phrase nominale de base la plus longue comme condition du médicament. N'incluez pas les phrases complexes, n'incluez pas les phrases coordonnées. Au lieu de cela, extrayez de ces phrases la phrase de base, même si cela signifie que vous vous retrouverez avec plusieurs conditions.
 
-Un attribut de certitude "conditionnel" ne doit pas être ajouté sur l'entité concernée par la condition.
+**Ne pas inclure les "si" ou les "en cas de", etc. dans l'annotation mais seulement la condition elle-même.**
 
-<span style="color:red">pas prendre les si/en cas de...</span>
+### Attribut
 
-<span style="color:red">ATTRIBUT certainty sur condition</span> 
+- Certitude (**"certainty"**) : Par défaut **"factual"** (la condition est toujours vraie), mais peut être aussi **"uncertain"**  (incertaine), **"sugested"** (suggérée) ou encore **"negated"** (niée, la condition n'en est pas une). Cet attribut de certitude ne s'applique qu'à la condition elle-même (voir exemple).
+
+### Exemples
 
 - *codenfan une dose/poids si besoin maximum 3x par jour*
   - drug : *codenfan*
-  - condition : *si besoin*
+  - condition : *besoin*
 
-S'il y a différentes conditions mentionnées pour le même médicament alors inclure une entrée par condition. Ajoutez la relation avec l'entité pour chacune. Dans les cas où plusieurs médicaments sont donnés avec la même condition, indiquez la condition avec tous les médicaments et ajoutez la relation pour chacun.
+
+S'il y a différentes conditions mentionnées pour le même médicament alors inclure une entrée par condition. Dans les cas où plusieurs médicaments sont donnés avec la même condition, indiquez la condition avec tous les médicaments
 
 
 - *il a ete explique aux parents d utiliser l oxygene en cas d inconfort, de paleur ou de gene respiratoire et non en fonction d un chiffre de saturation*
@@ -503,7 +510,7 @@ S'il y a différentes conditions mentionnées pour le même médicament alors in
   - condition : *paleur*
   - condition : *gene respiratoire*
   - condition : *chiffre de saturation*
-    - certainty : negated 
+    - certainty : negated (ici le chiffre de saturation n'est pas une vraie condition, d'où le **"negated"**)
 
 Si une condition est composée de plusieurs sous-conditions (séparées par "et"), annotez-les séparément avec plusieurs entrées.
 
@@ -535,14 +542,15 @@ Choisissez parmi les valeurs possibles :
 - **"start"** : mot indiquant le début de la prise du médicament ou la date du début.
 - **"stop"** : mot indiquant l'arrêt de la prise du médicament ou la date de l'arrêt.
 - **"start-stop"** : mot indiquant la prise unique d'un médicament ou la date de la prise unique.
-- **"increase"** : mot indiquant l'augmentation de la dose d'un médicament déjà pris, ou la date de l'augmentation.
-- **"decrease"** : mot indiquant la diminution de la dose d'un médicament déjà pris, ou la date de la diminution.
-- **"continue"** : mot indiquant la poursuite de prise d'un médicament sans changement clair de dosage, ou la date de la poursuite.
+- **"increase"** : mot indiquant l'augmentation de la dose d'un médicament déjà pris, ou la date de l'augmentation. L'augmentation doit être explicite (présence du mot "augmentation" par exemple) et non implicite (via les doses).
+- **"decrease"** : mot indiquant la diminution de la dose d'un médicament déjà pris, ou la date de la diminution. La diminution doit être explicite (présence du mot "diminution" par exemple) et non implicite (via les doses).
+- **"continue"** : mot indiquant la poursuite de prise d'un médicament sans changement clair de dose, ou la date de la poursuite.
 - **"switch"** : mot indiquant le changement de médicament/molécule, ou la date du changement.
 
 ### Attributs
 
-- Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des événements. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que l'événements se situe avant, pendant ou après la rédaction du document.
+- <span style="color:red">NE PAS ANNOTER LA TEMPORALITE.</span>
+ Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des événements. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que l'événements se situe avant, pendant ou après la rédaction du document.
 
 
 S'il y a deux événements sur la même expression (même s'ils sont identiques, par exemple 2 événements de début), vous devez annoter l'expression deux fois avec un événement **"start"**.
@@ -588,15 +596,17 @@ S'il y a deux événements pour une entité, annotez deux entrées distinctes : 
 
 - *debut du traitement par ambisome le 29 mars 2014 a 3 mg/kg jusqu au 2 avril puis 5 mg/kg jusqu au 7 avril, puis 7,5 mg/kg jusqu au 30 avril*
 
+<span style="color:red">CONTINUE ou DUREE ? Différence ?</span>
+
   - start : *debut*
   - start : *29 mars 2014*
-  - increase : *jusqu au 2 avril*
-  - increase : *jusqu au 7 avril*
+  - dose : *3 mg/kg*
+  - continue : *jusqu au 2 avril* (ici c'est un **"continue"** et non un **"increase"** car il faut regarder en détail les doses pour voir l'augmentation)
+  - dose : *5 mg/kg*
+  - continue : *jusqu au 7 avril* (ici c'est un **"continue"** et non un **"increase"** car il faut regarder en détail les doses pour voir l'augmentation)
+  - dose : *7.5 mg/kg*
   - stop : *jusqu au 30 avril*
 
-<span style="color:red">increase./decrease explicite</span>
-
-<span style="color:red"> mettre des dose/durée sur l'exemple</span>
 
 - *la pancytopenie s est compliquee apres la chimiotherapie d un sepsis a escherichia coli resistant a la tazocilline (tazocilline\* depuis le 6 septembre 2010) traite par fortum a partir du 15 septembre 2010*
   - drugblob : *tazocilline\* depuis le 6 septembre 2010*
@@ -639,7 +649,11 @@ Dès qu'un médicament possède des attributs : il est automatique dans un **"dr
 
 Du premier mot (médicament, attributs ou événement) jusqu'au dernier. Le type d'événement doit être appliqué sur les modèles de prescription liés. Si un médicament n'a pas d'attributs, ne pas faire de prescription.
 
-Examples :
+### ATTRIBUTS :
+
+Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut), **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"** quand un de ces évènements est implicite mais sans terme dans la prescription pouvant être explicitement annoté comme un tel event.
+
+### Exemples :
 - *AUGMENTIN 600mg toutes les 8h jusuq'au 2019-10-11 inclus. PARACETAMOL 250mg toutes les 6h de façon systématique pendant 48h puis en cas de douleurs pendant 7 jours*
   - drug_blob : *AUGMENTIN 600mg toutes les 8h jusuq'au 2019-10-11 inclus*
     - drug : *AUGMENTIN*
@@ -663,7 +677,7 @@ Examples :
     - frequency : *4/jour*
     - condition : *si douleurs*
 
-Si un attribut ou un événement est lié à plusieurs médicaments, ne l'incluez que dans le motif **"ordo_blob"** qui inclura les médicaments.
+Si un attribut ou un événement est lié à plusieurs médicaments, ne l'incluez que dans le motif **"ordo_blob"** qui inclura les **"drug"** et/ou les **"drug_blob** concernés.
 
 Ici, "toujours" est lié à l'ordonnance :
 
@@ -695,21 +709,14 @@ Informations qui indiquent quand les événements et les durées doivent avoir l
 
 ## Attribut temporel (temporal_marker)
 
-Informations indiquant si le médicament a été administré dans le passé, est administré actuellement ou sera administré dans le futur, dans la mesure où ces informations sont exprimées dans le temps des verbes et des verbes auxiliaires utilisés pour exprimer les événements. Un attribut temporel pour chaque événement.
+<span style="color:red">NE PAS ANNOTER LA TEMPORALITE.</span>
 
-### Comment marquer ?
+Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des **"duree"** et des **"event"**. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée ou l'événement se situe avant, pendant ou après l'hospitalisation en cours.
 
-Les événements et la durée peuvent être marqués.
+Voir [Durée](#durée-duree) et [Événements](#évènements) pour des exemples.
 
-Choisissez parmi les valeurs possibles pour chaque événement : passé, présent, futur. L'attribut temporel par défaut est "présent".
 
-- Passé : L'événement s'est produit avant l'hospitalisation actuelle.
-- Présent : L'événement s'est produit pendant l'hospitalisation actuelle.
-- Futur : L'événement s'est produit après l'hospitalisation actuelle.
-
-Voir Durée et Événements pour des exemples.
-
-## Attributs de certitude
+## Attributs de certitude (certainty)
 
 Informations permettant de savoir si l'événement se produit. La certitude peut être exprimée par des mots d'incertitude, par exemple, "suggéré", ou par des modaux, par exemple, "devrait" indique une suggestion.
 
@@ -724,7 +731,19 @@ Choisissez parmi les valeurs possibles : conditionnel, suggestion, factuel, ince
 - Négatif : L'entité se produit/ne se produit pas, par exemple, un médicament n'est pas administré.
 - Contre-indiqué : le médicament est mentionné comme une contre-indication.
 
-Voir Medicaments pour des exemples.
+Voir [Médicaments](#médicament-ou-classe-de-médicaments) et [Condition](#condition-condition) pour des exemples.
 
 
-[^1]: Pontus Stenetorp, Sampo Pyysalo, Goran Topić, Tomoko Ohta, Sophia Ananiadou and Jun'ichi Tsujii (2012). brat: a Web-based Tool for NLP-Assisted Text Annotation. In _Proceedings of the Demonstrations Session at EACL 2012_.
+## Attributs d'experimentateur (experiencer)
+
+Informations permettant de savoir si la personne étant consernée est le patient ou quelqu'un d'autre. 
+
+#### Comment marquer ?
+
+Choisissez parmi les valeurs possibles : (**"self"**, par défaut), ou quelqu'un de sa famille **"family"**, ou une autre personne **"other"**.
+
+- **"self"** : le patient lui-même
+- **"family"** : quelqu'un de sa famille 
+- **"other"** : une autre personne ne rentrant pas dans les 2 cas précédents.
+
+Voir [Médicaments](#médicament-ou-classe-de-médicaments) pour des exemples.
