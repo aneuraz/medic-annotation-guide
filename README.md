@@ -2,11 +2,11 @@
 
 [Lien vers le guide originale (en anglais)](https://equipe22.github.io/medExtAnnotation/)
 
-Les remarques/corrections sont en <span style="color:red">rouge</span>.
+Les remarques/corrections sont en `orange.
 
 A confirmer :
-  - <span style="color:red">DUREE/CONTINUE</span>
-  - <span style="color:red">Event_type dans drugblob/ordoblob</span>
+  - `DUREE/CONTINUE`
+  - `Event_type dans drugblob/ordoblob`
 
 
 ![test-image](examples/image-test.jpeg)
@@ -30,7 +30,7 @@ La sortie créée à partir de ces annotations sera une liste de médicaments et
 6. [Condition](#condition) : **"condition"**
 7. [Événement](#evenement) : **"event"** (**"start"**, **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"**)
 8. [Prescriptions](#prescription) : **"drug_blob"**, **"ordo_blob"**
-9. [Attributs](#att) : **"temporal_marker"** (<span style="color:red">NE PAS ANNOTER.</span>), **"certainty"**, **"experiencer"**, **"event_type"**
+9. [Attributs](#att) : **"temporal_marker"** (`NE PAS ANNOTER`), **"certainty"**, **"experiencer"**, **"event_type"**
 
 
 
@@ -393,7 +393,7 @@ Suivez les mêmes principes de base que pour l'annotation de la fréquence. N'in
 
 ### Attribut
 
-- <span style="color:red">NE PAS ANNOTER LA TEMPORALITE.</span> Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des durées. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée se situe avant, pendant ou après l'hospitalisation en cours.
+- `NE PAS ANNOTER LA TEMPORALITE.` Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des durées. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée se situe avant, pendant ou après l'hospitalisation en cours.
 
 ### Exemples
 
@@ -549,7 +549,7 @@ Choisissez parmi les valeurs possibles :
 
 ### Attributs
 
-- <span style="color:red">NE PAS ANNOTER LA TEMPORALITE.</span>
+- `NE PAS ANNOTER LA TEMPORALITE.`
  Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des événements. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que l'événements se situe avant, pendant ou après la rédaction du document.
 
 
@@ -596,7 +596,7 @@ S'il y a deux événements pour une entité, annotez deux entrées distinctes : 
 
 - *debut du traitement par ambisome le 29 mars 2014 a 3 mg/kg jusqu au 2 avril puis 5 mg/kg jusqu au 7 avril, puis 7,5 mg/kg jusqu au 30 avril*
 
-<span style="color:red">CONTINUE ou DUREE ? Différence ?</span>
+`CONTINUE ou DUREE ? Différence ?`
 
   - start : *debut*
   - start : *29 mars 2014*
@@ -709,7 +709,7 @@ Informations qui indiquent quand les événements et les durées doivent avoir l
 
 ## Attribut temporel (temporal_marker)
 
-<span style="color:red">NE PAS ANNOTER LA TEMPORALITE.</span>
+`NE PAS ANNOTER LA TEMPORALITE.`
 
 Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des **"duree"** et des **"event"**. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée ou l'événement se situe avant, pendant ou après l'hospitalisation en cours.
 
