@@ -591,9 +591,9 @@ S'il existe plusieurs médicaments pour un même événement, annotez le normale
 # Prescription
 
 Les prescriptions sont des groupements d'annotations. Il existe deux types de prescription : la presciption de médicaments (**"drug_blob"**) et la prescription d'ordonnance (**"ordo_blob"**).
-  - Un **drug_blob** correspond à un et un seul médicaments ainsi que ses attributs. Si le même médicament est cité deux fois, il faut ses deux mentions dans le drugblob.
+  - Un **drug_blob** correspond à **un et un seul** médicaments(**"drug"**)/classe de médicament (**"class"**) ainsi que ses attributs. Si le même médicament est cité deux fois, il faut ses deux mentions dans le **"drug_blob"**.
 
-  - Un **ordo_blob** correspond à un regroupement de **drug_blob** et/ou de médicaments (**"drug"** ou **"class"**) isolés ayant un attribut commun.
+  - Un **ordo_blob** correspond à un regroupement de **drug_blob** et/ou de médicaments (**"drug"**) ou classes de médicaments (**"class"**) isolés ayant un attribut commun.
 
 
 ##  Qu'est-ce qui doit être annoté ?
@@ -640,6 +640,17 @@ Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut
 
 <img src="examples/exemple2.PNG" width="1000px">
 
+- *il a ete explique aux parents d utiliser l oxygene en cas d inconfort, de paleur ou de gene respiratoire et non en fonction d un chiffre de saturation*
+  - **"drug_blob"** : *oxygene en cas d inconfort, de paleur ou de gene respiratoire et non en fonction d un chiffre de saturation*
+    - **"drug"** : *oxygene*
+    - **"condition"** : *inconfort*
+    - **"condition"** : *paleur*
+    - **"condition"** : *gene respiratoire*
+    - **"condition"** : *chiffre de saturation*
+      - **"certainty"** : negated (ici le chiffre de saturation n'est pas une vraie condition, d'où le **"negated"**)
+
+<img src="examples/exemple5.PNG" width="1000px">
+
 - *doliprane 1 dose poids\*4/ jour si douleurs (paracetamol 1 boite)*
   - **"drug_blob"** : *doliprane 1 dose poids\*4/ jour si douleurs (paracetamol*
     - **"drug"** : *doliprane*
@@ -650,7 +661,6 @@ Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut
 
 Si un attribut ou un événement est lié à plusieurs médicaments, ne l'incluez que dans le motif **"ordo_blob"** qui inclura les **"drug"** et/ou les **"drug_blob** concernés.
 
-Ici, *debuter* est lié à l'ordonnance :
 
 - *traitement par endoxan avant de debuter un traitement par mabthera fludarabine endoxan etant donne la lymphocytose majeure et la presence d anemie hemolytique*
   - **"drug"** : *endoxan*
@@ -662,7 +672,6 @@ Ici, *debuter* est lié à l'ordonnance :
 
 <img src="examples/exemple3.PNG" width="1000px">
 
-Ici, *toujours* est lié à l'ordonnance :
 
 - *je ne modifie pas son traitement, soit toujours lasilix 20 mg/j, atacand 8 mg, ezetrol , calciparat 1 g, allopurinol 300 mg et crestor 5.*
   - ordo_blob : *toujours lasilix 20 mg/j, atacand 8 mg, ezetrol , calciparat 1 g, allopurinol 300 mg et crestor 5*
