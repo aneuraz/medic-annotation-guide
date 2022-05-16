@@ -3,7 +3,7 @@
 [Lien vers le guide originale (en anglais)](https://equipe22.github.io/medExtAnnotation/)
 
 
-# Vue d'ensemble :
+# Vue d'ensemble
 
 Ce guide a pour but d'aider et de fournir une méthode standard d'annotation pour l'extraction de médicaments des dossiers médicaux électroniques français. Il est fortement inspiré des directives d'annotation préliminaires du défi i2b2 Medication Extraction Challenge de 2009. Pour chaque rapport de patient fourni, l'objectif est d'extraire des informations sur tous les médicaments qui sont connus pour être pris par le patient ou liés à lui. Certains des médicaments sont fournis sous forme semi-structurée (liste), par exemple, des sections intitulées "médicaments à l'admission" ou "médicaments à la sortie". La sortie finale des médicaments du patient devrait inclure ces derniers ; cependant, le véritable intérêt est d'extraire les médicaments qui sont mentionnés dans les récits des dossiers.
 
@@ -14,13 +14,13 @@ La sortie créée à partir de ces annotations sera une liste de médicaments et
 
 
 1. [Médicament ou Classe de médicament](#médicament-ou-classe-de-médicaments) : **"drug"**, **"class"**
-2. [Dose](#dose-dose) : **"dose"**
-3. [Fréquence](#fréquence-freq) : **"freq"**
-4. [Durée](#durée-duree) : **"duree"**
-5. [Voie d'administration](#voie-dadministration-route) : **"route"**
-6. [Condition](#condition-condition) : **"condition"**
+2. [Dose](#dose-"dose") : **"dose"**
+3. [Fréquence](#fréquence-"freq") : **"freq"**
+4. [Durée](#durée-"duree") : **"duree"**
+5. [Voie d'administration](#voie-dadministration-"route") : **"route"**
+6. [Condition](#condition-"condition") : **"condition"**
 7. [Événement](#évènements) : **"event"** : **"start"**, **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"**
-8. [Prescription](#prescription-drugblobordoblob) : **"drug_blob"**, **"ordo_blob"**
+8. [Prescription](#prescription-"drugblob""ordoblob") : **"drug_blob"**, **"ordo_blob"**
 9. [Attributs](#attributs-rappels) :
     - (`NE PAS ANNOTER`) **"temporal_marker"** : **"past"**, **"present"**, **"future"**
     - **"certainty"** : **"factual"**, **"suggested"**, **"uncertain"**, **"negated"**, **"counterindication"** 
@@ -44,7 +44,7 @@ Nom du médicament, génériques, classe de médicaments ou de substances
 
 Pour annoter des médicaments, le texte doit inclure une déclaration explicite indiquant que le patient a pris ce médicament, qu'il le prend actuellement, qu'il se voit prescrire ce médicament, qu'il lui est suggéré de le prendre, qu'il a eu des effets secondaires en le prenant ou qu'il ne peut pas le prendre en raison d'une contre-indication.
 
-### Médicament (drug)
+### Médicament (**"drug"**)
 
 ### Inclut :
 
@@ -75,7 +75,7 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
 - dispositif médical, par exemple, Pompe à Insuline (même si un médicament s'y trouve)
 - transfusion
 
-### Classe de médicaments (class)
+### Classe de médicaments (**"class"**)
 
 ### Inclut :
 
@@ -194,7 +194,7 @@ Annoter le nom des médicaments même si leurs attributs sont niés
 
 <a name="dose"></a>
 
-# Dose (dose)
+# Dose (**"dose"**)
 
 La quantité d'un seul médicament utilisé dans chaque administration, par exemple *un comprimé, une dose, 30 mg*.
 
@@ -282,7 +282,7 @@ Annotez un seul motifs pour tous les médicaments lorsque la dose en concerne pl
 
 <a name="freq"></a>
 
-# Fréquence (freq)
+# Fréquence (**"freq"**)
 
 Termes, phrases ou abréviations qui décrivent la fréquence à laquelle chaque dose du médicament doit être prise.
 
@@ -337,7 +337,7 @@ Si la fréquence est segmentée et concerne la même entité, annoter la partie 
 
 <a name="duree"></a>
 
-# Durée (duree)
+# Durée (**"duree"**)
 
 Une expression de temps écoulé qui indique pendant combien de temps le médicament doit être administré. Ces expressions sont souvent des syntagmes nominaux, des syntagmes prépositionnels ou des clauses.
 
@@ -394,7 +394,7 @@ Suivez les mêmes principes de base que pour l'annotation de la fréquence. N'in
 
 <a name="voie"></a>
 
-# Voie d'administration (route)
+# Voie d'administration (**"route"**)
 
 Décrit la méthode d'administration du médicament.
 
@@ -451,7 +451,7 @@ Les cas où un mode s'applique à plusieurs médicaments doivent être traités 
 
 <a name="condition"></a>
 
-# Condition (condition)
+# Condition (**"condition"**)
 
 Expressions qui indiquent la condition pour laquelle le médicament doit être administré. Ces expressions sont souvent des propositions conditionnelles et commencent par une expression conditionnelle telle que "si", "en cas de", "en fonction de"....
 
@@ -588,7 +588,7 @@ S'il existe plusieurs médicaments pour un même événement, annotez le normale
 
 <a name="prescription"></a>
 
-# Prescription (drug_blob/ordo_blob)
+# Prescription (**"drug_blob"**/**"ordo_blob"**)
 
 Les prescriptions sont des groupements d'annotations. Il existe deux types de prescription : la presciption de médicaments (**"drug_blob"**) et la prescription d'ordonnance (**"ordo_blob"**).
   - Un **drug_blob** correspond à un et un seul médicaments ainsi que ses attributs. Si le même médicament est cité deux fois, il faut ses deux mentions dans le drugblob.
@@ -607,7 +607,7 @@ Du premier mot (médicament, attributs ou événement) jusqu'au dernier. Le type
 
 ### Attributs :
 
-Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut), **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"** quand un de ces évènements est implicite mais sans terme dans la prescription pouvant être explicitement annoté comme un tel event.
+Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut), **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"** quand un de ces évènements est implicite mais sans terme dans la prescription pouvant être explicitement annoté comme tel.
 
 ### Exemples :
 
@@ -682,24 +682,13 @@ Ici, *toujours* est lié à l'ordonnance :
 
 <img src="examples/ordo_blob1.png" width="1000px">
 
-
-<a name="att"></a>
 # Attributs: Rappels
 
-Informations qui indiquent quand les événements et les durées doivent avoir lieu et s'ils sont factuels, suggérés, conditionnels ou incertains.
+Informations supplémentaire sur certaines entités.
 
-## Attribut temporel (temporal_marker)
+## Attributs de certitude (**"certainty"**)
 
-(`NE PAS ANNOTER`)
-
-Temporalité (**temporal_marker**) : Par défaut, **"present"** est l'attribut temporel des **"duree"** et des **"event"**. Il peut être **"past"**, **"present"** ou **"future"**. Il doit être défini selon que la durée ou l'événement se situe avant, pendant ou après l'hospitalisation en cours.
-
-Voir [Durée](#durée-duree) et [Événements](#évènements) pour des exemples.
-
-
-## Attributs de certitude (certainty)
-
-Informations permettant de savoir le degré de certitude de la prise d'un médicament/classe de medicament ou d'une condition. La certitude peut être exprimée par des mots d'incertitude (par exemple "suggéré"), ou par des modaux (par exemple "devrait"), qui indiquent une suggestion.
+Informations permettant de savoir le degré de certitude de la prise d'un médicament (**"drug"**)/classe de medicament (**"class"**) ou d'une condition (**"condition"**). La certitude peut être exprimée par des mots d'incertitude (par exemple "suggéré"), ou par des modaux (par exemple "devrait"), qui indiquent une suggestion.
 
 ### Comment marquer ?
 
@@ -714,9 +703,9 @@ Choisissez parmi les valeurs possibles (**"factual"** est par défaut):
 Voir [Médicaments](#médicament-ou-classe-de-médicaments) et [Condition](#condition-condition) pour des exemples.
 
 
-## Attributs d'experimentateur (experiencer)
+## Attributs d'experimentateur (**"experiencer"**)
 
-Pour tous les médicaments listés, le patient sera considéré par défaut comme expérimentateur. Si ce n'est pas le cas, il faut le préciser.
+Pour tous les médicaments (**"drug"**)/classes de medicament (**"class"**) listés, le patient sera considéré par défaut comme expérimentateur. Si ce n'est pas le cas, il faut le préciser.
 
 ### Comment marquer ?
 
@@ -727,3 +716,11 @@ Choisissez parmi les valeurs possibles : le patient (**"self"**, par défaut), o
 - **"other"** : une autre personne ne rentrant pas dans les 2 cas précédents.
 
 Voir [Médicaments](#médicament-ou-classe-de-médicaments) pour des exemples.
+
+## Attribut de type d'évènement (**"event_type"**)
+
+Information à propos des **"drug_blob"** et des **"ordo_blob"** quand un évènement est implicite mais pas explicite.
+
+### Comment marquer ?
+
+Il faut à choisir dans **"start"** (par défaut), **"stop"**, **"start-stop"**, **"increase"**, **"decrease"**, **"continue"**, **"switch"** quand un de ces évènements est implicite mais sans terme dans la prescription pouvant être explicitement annoté comme tel.
