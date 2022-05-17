@@ -64,6 +64,7 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
   - Débit glucidique
 - Thérapie par substance, par exemple, *Corticothérapie* ou *traitement antirétroviral* (elle sera annotée comme une classe de médicaments).
 
+- 
 
 ### Exclut :
 
@@ -72,7 +73,6 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
 - Tabac
 - Alcool
 - Médicaments illicites
-- dispositif médical, par exemple, Pompe à Insuline (même si un médicament s'y trouve)
 - transfusion
 
 ### Classe de médicaments (**"class"**)
@@ -191,6 +191,16 @@ Annoter le nom des médicaments même si leurs attributs sont niés
 
 - *pas de necessite de doublement des doses d hydrocortisone*
   - **"drug"** : *hydrocortisone*
+
+
+
+Dans le cas d'un dispositif médical, on annote uniquement le médicament (s'il s'y trouve). Le dispositif sera annoté comme une [voie d'administration](#voie-dadministration-route (**"route"**).
+
+- *Pompe à Insuline*
+  - **"drug"** : *Insuline*
+
+- *DIU MIRENA*
+  - **"drug"** : *MIRENA*
 
 <a name="dose"></a>
 
@@ -429,6 +439,10 @@ Suivez les mêmes principes de base que pour l'annotation de la durée. Plusieur
   - **"route"** : *intraveineuse*
 - *necessitant un traitement par kayexalate et aerosol de ventoline*
   - **"route"** : *aerosol*
+- *Pompe à Insuline*
+  - **"route"** : *Pompe*
+- *DIU MIRENA*
+  - **"route"** : *DIU*
 
 Les changements dans le mode d'administration d'un médicament doivent être inclus dans des entrées séparées.
 
@@ -658,6 +672,20 @@ Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut
     - **"dose"** : *1 dose poids*
     - **"frequency"** : *4/jour*
     - **"condition"** : *si douleurs*
+
+Dans le cas d'une co-référence vers une phrase juxtaposée, faire un grand **"drug_blob"** qui regroupe les deux phrase.
+
+  - *A l'arrêt du traitement par Lansoprazole 15 mg/jour, le patient présente une récidive des épigastralgies. Je lui renouvelle son traitement à la demande.*
+    - **"drug_blob"** : *A l'arrêt du traitement par Lansoprazole 15 mg/jour, le patient présente une récidive des épigastralgies. Je lui renouvelle son traitement à la demande.*
+      - **"stop** : *arrêt*
+      - **"drug"** : *Lansoprazole*
+      - **"dose"** : *15 mg*
+      - **"freq"** : *jour*
+      - **"continue"** : *renouvelle*
+      - **"condition"** : *demande*
+      
+<img src="examples/exemple6.PNG" width="1000px">
+
 
 Si un attribut ou un événement est lié à plusieurs médicaments, ne l'incluez que dans le motif **"ordo_blob"** qui inclura les **"drug"** et/ou les **"drug_blob** concernés.
 
