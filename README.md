@@ -79,9 +79,9 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
 
 ### Inclut :
 
-- Nom collectif d'un groupe de médicaments, par exemple *corticoïdes* (il sera annoté comme une classe de médicaments).
-- Noms collectifs pour un groupe de médicaments, par exemple *vitamines* (ils seront annotés comme une classe de médicaments).
-Thérapie par substance, par exemple, *Corticothérapie* ou *traitement antirétroviral* (elle sera annotée comme une classe de médicaments).
+- Nom collectif d'un groupe de médicaments, par exemple *corticoïdes*.
+- Noms collectifs pour un groupe de médicaments, par exemple *vitamines*.
+- Thérapie par substance, par exemple, *Corticothérapie* ou *traitement antirétroviral*.
 - "therapie"
   - oxygénothérapie
   - corticothérapie
@@ -641,12 +641,12 @@ Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut
   - **"drug_blob"** : *AUGMENTIN 600mg toutes les 8h jusuq'au 2019-10-11 inclus*
     - **"drug"** : *AUGMENTIN*
     - **"dose"** : *600mg*
-    - **"frequence"** : *toutes les 8h*
+    - **"freq"** : *toutes les 8h*
     - **"end"** : *jusuq'au 2019-10-11 inclus*
   - **"drug_blob"** : *PARACETAMOL 250mg toutes les 6h de façon systématique pendant 48h puis en cas de douleurs pendant 7 jours*
     - **"drug"** : *PARACETAMOL*
     - **"dose"** : *250mg*
-    - **"frequence"** : *toutes les 6h*
+    - **"freq"** : *toutes les 6h*
     - **"condition"** : *de façon systématique*
     - **"duree"** : *48h*
     - **"condition"** : *en cas de douleurs*
@@ -670,7 +670,7 @@ Type d'évènement (**"event_type"**) : à choisir dans **"start"** (par défaut
     - **"drug"** : *doliprane*
     - **"drug"** : *paracetamol*
     - **"dose"** : *1 dose poids*
-    - **"frequency"** : *4/jour*
+    - **"freq"** : *4/jour*
     - **"condition"** : *si douleurs*
 
 Dans le cas d'une co-référence vers une phrase juxtaposée, faire un grand **"drug_blob"** qui regroupe les deux phrase.
@@ -702,25 +702,25 @@ Si un attribut ou un événement est lié à plusieurs médicaments, ne l'inclue
 
 
 - *je ne modifie pas son traitement, soit toujours lasilix 20 mg/j, atacand 8 mg, ezetrol , calciparat 1 g, allopurinol 300 mg et crestor 5.*
-  - ordo_blob : *toujours lasilix 20 mg/j, atacand 8 mg, ezetrol , calciparat 1 g, allopurinol 300 mg et crestor 5*
-    - continue : *toujours*
-    - drug_blob : *lasilix 20 mg/j*
-        - drug : *lasilix*
-      - dose :  *20 mg*
-      - frequency : */j*
-    - drug_blob : *latacand 8 mg*
-      - drug : *atacand*
-      - dose :  *8 mg*
-    - drug : *ezetrol*
-    - drug_blob : *calciparat 1 g*
-      - drug : *calciparat*
-      - dose :  *1 g*
-    - drug_blob : *allopurinol 300 mg*
-      - drug : *allopurinol*
-      - dose :  *300 mg*
-    - drug_blob: *crestor 5*
-      - drug : *crestor*
-      - dose : *5*
+  - **"ordo_blob"** : *toujours lasilix 20 mg/j, atacand 8 mg, ezetrol , calciparat 1 g, allopurinol 300 mg et crestor 5*
+    - **"continue"** : *toujours*
+    - **"drug_blob"** : *lasilix 20 mg/j*
+        - **"drug"** : *lasilix*
+      - **"dose"** :  *20 mg*
+      - **"freq"** : */j*
+    - **"drug_blob"** : *latacand 8 mg*
+      - **"drug"** : *atacand*
+      - **"dose"** :  *8 mg*
+    - **"drug"** : *ezetrol*
+    - **"drug_blob"** : *calciparat 1 g*
+      - **"drug"** : *calciparat*
+      - **"dose"** :  *1 g*
+    - **"drug_blob"** : *allopurinol 300 mg*
+      - **"drug"** : *allopurinol*
+      - **"dose"** :  *300 mg*
+    - **"drug_blob"**: *crestor 5*
+      - **"drug"** : *crestor*
+      - **"dose"** : *5*
 
 <img src="examples/exemple4.PNG" width="1000px">
 
@@ -732,6 +732,10 @@ Informations supplémentaire sur certaines entités.
 ## Attributs de certitude (**"certainty"**)
 
 Informations permettant de savoir le degré de certitude de la prise d'un médicament (**"drug"**)/classe de medicament (**"class"**) ou d'une condition (**"condition"**). La certitude peut être exprimée par des mots d'incertitude (par exemple "suggéré"), ou par des modaux (par exemple "devrait"), qui indiquent une suggestion.
+
+Si le médicament est dans un **"drug_blob"**, l'attribut peut être mis sur celui-ci.
+
+
 
 ### Comment marquer ?
 
