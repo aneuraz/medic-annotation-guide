@@ -118,7 +118,7 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
   - sedation
   - (re)hydratation
   - antibioprophylaxie
-- Dispositif médical, par exemple, Pompe à Insuline (même si un médicament s'y trouve
+- Dispositif médical, par exemple, Pompe à Insuline (même si un médicament s'y trouve)
 
 
 
@@ -309,7 +309,7 @@ Toute expression qui indique la fréquence d'administration d'une dose unique d'
   - /jour
   - /j
   - /24 heures
-  -  par mois
+  - par mois
   - tous les soirs
   - x 3 par jour
   - jour (si précéder d'un dose)
@@ -317,6 +317,7 @@ Toute expression qui indique la fréquence d'administration d'une dose unique d'
   - 850 - 1000 - 1000
   - 19/03, 25/03 et 01/04/2016
   - a J3, J5 et J7
+  - le matin
 
 - Les phrases temporelles qui précisent quand un médicament doit être pris (il s'agit généralement de phrases prépositionnelles et la préposition doit être incluse dans l'information extraite) :
 
@@ -357,13 +358,13 @@ Expressions qui décrivent la durée totale pendant laquelle le médicament doit
 
 ### Inclut :
 
-- Des expressions de durée :
+- Des expressions de durée (sans les adverbes) :
 
-  - [pendant] 10 jours
-  - [pour] un mois
-  - [durant] 2 semaines
+  - 10 jours
+  - un mois
+  - 2 semaines
   - tant que nécessaire
-  - [sur] 3h
+  - 3h
 
 ### Exclut :
 
@@ -486,7 +487,7 @@ Condition pour laquelle le médicament doit être administré.
 
 Annotez toujours la phrase adjectivale de base la plus informative ou la phrase nominale de base la plus longue comme condition du médicament. N'incluez pas les phrases complexes, n'incluez pas les phrases coordonnées. Au lieu de cela, extrayez de ces phrases la phrase de base, même si cela signifie que vous vous retrouverez avec plusieurs conditions.
 
-**Ne pas inclure les "si" ou les "en cas de", etc. dans l'annotation mais seulement la condition elle-même.**
+**Inclure les "si" ou les "en cas de", etc. dans l'annotation.**
 
 ### Attribut
 
@@ -495,14 +496,14 @@ Annotez toujours la phrase adjectivale de base la plus informative ou la phrase 
 ### Exemples
 
 - *codenfan une dose/poids si besoin maximum 3x par jour*
-  - **"condition"** : *besoin*
+  - **"condition"** : *si besoin*
 
 
 S'il y a différentes conditions mentionnées pour le même médicament alors inclure une entrée par condition. Dans les cas où plusieurs médicaments sont donnés avec la même condition, indiquez la condition avec tous les médicaments
 
 
 - *il a ete explique aux parents d utiliser l oxygene en cas d inconfort, de paleur ou de gene respiratoire et non en fonction d un chiffre de saturation*
-  - **"condition"** : *inconfort*
+  - **"condition"** : *en cas d inconfort*
   - **"condition"** : *paleur*
   - **"condition"** : *gene respiratoire*
   - **"condition"** : *chiffre de saturation*
@@ -511,13 +512,13 @@ S'il y a différentes conditions mentionnées pour le même médicament alors in
 Si une condition est composée de plusieurs sous-conditions (séparées par "et"), annotez-les séparément avec plusieurs entrées.
 
 - *melatonine 2mg : 1 gelule au coucher si agitation et probleme d endormissement*
-  - **"condition"** : *agitation*
+  - **"condition"** : *si agitation*
   - **"condition"** : *probleme d endormissement*
 
 Les différentes façons de désigner la même condition pour les médicaments doivent être traitées comme des conditions distinctes.
 
 - *en cas d'anemie aregenerative (hemolyse non mecanique) augmenter les corticoides*
-  - **"condition"** : *anemie aregenerative* 
+  - **"condition"** : *en cas d'anemie aregenerative* 
   - **"condition"** : *hemolyse non mecanique*
 
 <a name="evenement"></a>
