@@ -118,7 +118,7 @@ Pour annoter des médicaments, le texte doit inclure une déclaration explicite 
   - sedation
   - (re)hydratation
   - antibioprophylaxie
-- Dispositif médical, par exemple, Pompe à Insuline (même si un médicament s'y trouve)
+- Dispositif médical, sauf s'il contient un médicament, (e.g. on annote Pompe à Insuline)
 
 
 
